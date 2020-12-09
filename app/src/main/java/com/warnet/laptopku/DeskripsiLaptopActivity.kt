@@ -125,10 +125,6 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
 
-        //  Mendaftarkan event klik untuk pindah ke Activity Favorit
-        val favoriteImageView: android.widget.ImageView = findViewById(R.id.headerFavoriteImageView)
-        favoriteImageView.setOnClickListener(this)
-
         //  Mendaftarkan event klik untuk kembali ke Activity sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.headerKembaliImageView)
         kembaliImageView.setOnClickListener(this)
@@ -151,10 +147,6 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
             R.id.deskripsiLaptopBandingkanTextView ->{
                 val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
                 moveIntent.putExtra("laptopKiri", laptopTerbaru)
-                startActivity(moveIntent)
-            }
-            R.id.headerFavoriteImageView ->{
-                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.headerKembaliImageView -> finish()

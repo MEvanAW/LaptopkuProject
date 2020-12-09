@@ -91,10 +91,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Mendaftarkan event klik untuk pindah ke Activity Bandingkan
         val imgMenuBandingkan: ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         imgMenuBandingkan.setOnClickListener(this)
-
-        // Mendaftarkan event klik untuk pindah ke Activity Favorit
-        val favoriteImageView: ImageView = findViewById(R.id.mainActivityFavoriteImageView)
-        favoriteImageView.setOnClickListener(this)
     }
 
     // Memanggil data laptop dari Firestore sekaligus ditampilkan
@@ -221,10 +217,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val moveIntent = Intent(this@MainActivity, BandingkanActivity::class.java)
                 moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
-                startActivity(moveIntent)
-            }
-            R.id.mainActivityFavoriteImageView ->{
-                val moveIntent = Intent(this@MainActivity, FavoriteActivity::class.java)
                 startActivity(moveIntent)
             }
         }

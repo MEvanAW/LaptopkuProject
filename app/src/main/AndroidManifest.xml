@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".FavoriteActivity"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
-        <activity
             android:name=".DeskripsiLaptopActivity"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
