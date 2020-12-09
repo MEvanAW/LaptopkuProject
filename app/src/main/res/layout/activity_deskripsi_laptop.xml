@@ -39,58 +39,31 @@
                 android:layout_height="183dp"
                 android:src="@drawable/ic_laptop" />
 
+            <!-- Panel Biru -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <!-- Panel Biru -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="8dp"
-                    android:paddingLeft="18dp"
-                    android:orientation="vertical"
-                    android:background="#330099">
-                    <!-- Nama Laptop -->
-                    <TextView
-                        android:id="@+id/tv_namaLaptop"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="24sp"
-                        android:text="@string/asus_tuf_fx506ii"
-                        android:textColor="#ffffff"/>
-                    <!-- Harga Laptop -->
-                    <TextView
-                        android:id="@+id/tv_hargaLaptop"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="20sp"
-                        tools:text="Rp 13.999.000"
-                        android:textColor="#ffffff"
-                        android:textStyle="bold"/>
-                </LinearLayout>
-
-                <!-- Panel tambahkan ke favorit -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                android:paddingVertical="8dp"
+                android:paddingLeft="18dp"
+                android:orientation="vertical"
+                android:background="#330099">
+                <!-- Nama Laptop -->
+                <TextView
+                    android:id="@+id/tv_namaLaptop"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#E7E7E7"
-                    android:paddingHorizontal="24dp"
-                    android:gravity="center">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:src="@drawable/ic_favorite_abu"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#969696"
-                        android:text="@string/_1_7k"/>
-                </LinearLayout>
+                    android:textSize="24sp"
+                    android:text="@string/asus_tuf_fx506ii"
+                    android:textColor="#ffffff"/>
+                <!-- Harga Laptop -->
+                <TextView
+                    android:id="@+id/tv_hargaLaptop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    tools:text="Rp 13.999.000"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- ViewGroup untuk Spesifikasi dan Bandingkan -->

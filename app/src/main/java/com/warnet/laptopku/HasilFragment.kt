@@ -293,30 +293,30 @@ class HasilFragment() : Fragment() {
             .get()
             .addOnSuccessListener {result ->
                 for (document in result){
-                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")!!,
-                        document.getString("hargaLaptop")!!,
-                        document.getString("gambar")!!,
-                        document.getString("acadapter")!!,
-                        document.getString("audio")!!,
-                        document.getString("baterai")!!,
-                        document.getString("berat")!!,
-                        document.getString("brand")!!,
-                        document.getString("chipset")!!,
-                        document.getString("cpu")!!,
-                        document.getString("dimensi")!!,
-                        document.get("grafis")!! as ArrayList<String>,
-                        document.get("io")!! as ArrayList<String>,
-                        document.get("kategori")!! as ArrayList<String>,
-                        document.getString("keyboard")!!,
-                        document.get("komunikasi")!! as ArrayList<String>,
-                        document.getString("layar")!!,
-                        document.getString("memori")!!,
-                        document.getString("os")!!,
-                        document.getString("penyimpanan")!!,
-                        document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!,
-                        document.getLong("performa")!!.toInt(),
-                        document.getLong("portabilitas")!!.toInt()))
+                    listLaptop.add(LaptopTerbaru(document.getString("namaLaptop")?: "",
+                        document.getString("hargaLaptop")?: "",
+                        document.getString("gambar")?: "",
+                        document.getString("acadapter")?: "",
+                        document.getString("audio")?: "",
+                        document.getString("baterai")?: "",
+                        document.getString("berat")?: "",
+                        document.getString("brand")?: "",
+                        document.getString("chipset")?: "",
+                        document.getString("cpu")?: "",
+                        document.getString("dimensi")?: "",
+                        (document.get("grafis")?: arrayListOf("")) as ArrayList<String>,
+                        (document.get("io")?: arrayListOf("")) as ArrayList<String>,
+                        (document.get("kategori")?: arrayListOf("")) as ArrayList<String>,
+                        document.getString("keyboard")?: "",
+                        (document.get("komunikasi")?: arrayListOf("")) as ArrayList<String>,
+                        document.getString("layar")?: "",
+                        document.getString("memori")?: "",
+                        document.getString("os")?: "",
+                        document.getString("penyimpanan")?: "",
+                        document.getString("tanggalRilis")?: "",
+                        document.getString("webcam")?: "",
+                        (document.getLong("performa")?: 1).toInt(),
+                        (document.getLong("portabilitas")?: 1).toInt()))
                 }
                 if(listLaptop.isNotEmpty()){
                     filterCari()
@@ -395,15 +395,15 @@ class HasilFragment() : Fragment() {
             .get()
             .addOnSuccessListener {result ->
                 for (document in result){
-                    rekomenLaptop.add(RekomenLaptop(document.getBoolean("2d")!!,
-                        document.getBoolean("3d")!!,
-                        document.getString("brand")!!,
-                        document.getBoolean("gaming")!!,
-                        document.getLong("harga")!!.toInt(),
-                        document.getBoolean("kalkulasi")!!,
-                        document.getString("nama")!!,
-                        document.getBoolean("ringan")!!,
-                        document.getBoolean("video")!!
+                    rekomenLaptop.add(RekomenLaptop(document.getBoolean("2d")?: false,
+                        document.getBoolean("3d")?: false,
+                        document.getString("brand")?: "",
+                        document.getBoolean("gaming")?: false,
+                        (document.getLong("harga")?: 0).toInt(),
+                        document.getBoolean("kalkulasi")?: false,
+                        document.getString("nama")?: "",
+                        document.getBoolean("ringan")?: false,
+                        document.getBoolean("video")?: false
                     ))
                 }
                 if (rekomenLaptop.isEmpty())

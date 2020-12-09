@@ -96,7 +96,7 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun muatLaptopKiri(){
+    private fun muatLaptopKiri(){
         // Mengisi ImageView dengan foto laptop
         Glide.with(applicationContext)
             .load(laptopKiri?.photo)
@@ -151,7 +151,7 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    fun muatLaptopKanan(){
+    private fun muatLaptopKanan(){
         // Mengisi ImageView dengan foto laptop
         Glide.with(applicationContext)
             .load(laptopKanan?.photo)
@@ -215,30 +215,30 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
             .get()
             .addOnSuccessListener {result ->
                 for (document in result){
-                    listLaptop?.add(LaptopTerbaru(document.getString("namaLaptop")!!,
-                        document.getString("hargaLaptop")!!,
-                        document.getString("gambar")!!,
-                        document.getString("acadapter")!!,
-                        document.getString("audio")!!,
-                        document.getString("baterai")!!,
-                        document.getString("berat")!!,
-                        document.getString("brand")!!,
-                        document.getString("chipset")!!,
-                        document.getString("cpu")!!,
-                        document.getString("dimensi")!!,
-                        document.get("grafis")!! as ArrayList<String>,
-                        document.get("io")!! as ArrayList<String>,
-                        document.get("kategori")!! as ArrayList<String>,
-                        document.getString("keyboard")!!,
-                        document.get("komunikasi")!! as ArrayList<String>,
-                        document.getString("layar")!!,
-                        document.getString("memori")!!,
-                        document.getString("os")!!,
-                        document.getString("penyimpanan")!!,
-                        document.getString("tanggalRilis")!!,
-                        document.getString("webcam")!!,
-                        document.getLong("performa")!!.toInt(),
-                        document.getLong("portabilitas")!!.toInt()))
+                    listLaptop?.add(LaptopTerbaru(document.getString("namaLaptop")?: "",
+                        document.getString("hargaLaptop")?: "",
+                        document.getString("gambar")?: "",
+                        document.getString("acadapter")?: "",
+                        document.getString("audio")?: "",
+                        document.getString("baterai")?: "",
+                        document.getString("berat")?: "",
+                        document.getString("brand")?: "",
+                        document.getString("chipset")?: "",
+                        document.getString("cpu")?: "",
+                        document.getString("dimensi")?: "",
+                        (document.get("grafis")?: arrayListOf("")) as ArrayList<String>,
+                        (document.get("io")?: arrayListOf("")) as ArrayList<String>,
+                        (document.get("kategori")?: arrayListOf("")) as ArrayList<String>,
+                        document.getString("keyboard")?: "",
+                        (document.get("komunikasi")?: arrayListOf("")) as ArrayList<String>,
+                        document.getString("layar")?: "",
+                        document.getString("memori")?: "",
+                        document.getString("os")?: "",
+                        document.getString("penyimpanan")?: "",
+                        document.getString("tanggalRilis")?: "",
+                        document.getString("webcam")?: "",
+                        (document.getLong("performa")?: 1).toInt(),
+                        (document.getLong("portabilitas")?: 1).toInt()))
                 }
                 if(listLaptop!!.isNotEmpty())
                     listLaptop!!.forEach{ autoComplete?.add(it.name) }
@@ -247,11 +247,10 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
             }
     }
 
-    fun showToast(){
+    private fun showToast(){
         val toast = android.widget.Toast.makeText(this,
             "Tidak ditemukan laptop tersebut pada basis data kami.",
             android.widget.Toast.LENGTH_LONG)
-        //toast.setGravity(android.view.Gravity.BOTTOM,0,130)
         toast.show()
     }
 }

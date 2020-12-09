@@ -160,7 +160,7 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    autoComplete.add(document.getString("namaLaptop")!!)
+                    autoComplete.add(document.getString("namaLaptop")?: "")
                 }
                 if (autoComplete.isEmpty()) {
                     muatNamaLaptop()

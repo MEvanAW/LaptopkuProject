@@ -30,10 +30,10 @@ class BudgetFragment : Fragment() {
         minEditText.addTextChangedListener(object : android.text.TextWatcher{
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int){}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int){
-                if(s.isNotBlank())
-                    min = s.toString().toInt()
+                min = if(s.isNotBlank())
+                    s.toString().toInt()
                 else
-                    min = 0
+                    0
             }
             override fun afterTextChanged(s: android.text.Editable){}
         })
@@ -41,10 +41,10 @@ class BudgetFragment : Fragment() {
         maxEditText.addTextChangedListener(object : android.text.TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int){
-                if(s.isNotBlank())
-                    max = s.toString().toInt()
+                max = if(s.isNotBlank())
+                    s.toString().toInt()
                 else
-                    max = 0
+                    0
             }
             override fun afterTextChanged(s: android.text.Editable){}
         })
