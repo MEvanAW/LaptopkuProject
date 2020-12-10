@@ -7,6 +7,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main.footer_telusuri.*
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
@@ -79,14 +80,17 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
         // Mendaftarkan event klik untuk pindah Main Activity
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
         telusuriImageView.setOnClickListener(this)
+        telusuriFooterTelusuriTextView.setOnClickListener(this)
 
         // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
         val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         rekomendasiImageView.setOnClickListener(this)
+        telusuriFooterRekomendasiTextView.setOnClickListener(this)
 
         //  Mendaftarkan event klik untuk pindah ke Activity Bandingkan
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
+        telusuriFooterBandingkanTextView.setOnClickListener(this)
 
         //  Mendaftarkan event klik untuk kembali ke Activity sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.headerKembaliImageView)
@@ -96,16 +100,18 @@ class HasilTelusuriActivity : AppCompatActivity(), View.OnClickListener {
     // Isi semua event klik
     override fun onClick(v: View?){
         when(v?.id){
-            R.id.telusuriFooterTelusuriImageView ->{
+            R.id.telusuriFooterTelusuriImageView, R.id.telusuriFooterTelusuriTextView ->{
                 val moveIntent = Intent(this@HasilTelusuriActivity, MainActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.telusuriFooterRekomendasiImageView ->{
+            R.id.telusuriFooterRekomendasiImageView, R.id.telusuriFooterRekomendasiTextView ->{
                 val moveIntent = Intent(this@HasilTelusuriActivity, RekomendasiActivity::class.java)
+                moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)
             }
-            R.id.telusuriFooterBandingkanImageView ->{
+            R.id.telusuriFooterBandingkanImageView, R.id.telusuriFooterBandingkanTextView ->{
                 val moveIntent = Intent(this@HasilTelusuriActivity, BandingkanActivity::class.java)
+                moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)
             }
             R.id.headerKembaliImageView -> {

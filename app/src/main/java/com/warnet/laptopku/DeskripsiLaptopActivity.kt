@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_deskripsi_laptop.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.footer_telusuri.*
 import kotlinx.android.synthetic.main.header_cari_laptop.*
 
 class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
@@ -115,15 +116,18 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
         // Mendaftarkan event klik untuk pindah Main Activity
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterTelusuriImageView)
         telusuriImageView.setOnClickListener(this)
+        telusuriFooterTelusuriTextView.setOnClickListener(this)
 
         // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
         val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         rekomendasiImageView.setOnClickListener(this)
+        telusuriFooterRekomendasiTextView.setOnClickListener(this)
 
         //  Mendaftarkan event klik untuk pindah ke Activity Bandingkan
         bandingkanTextView.setOnClickListener(this)
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
+        telusuriFooterBandingkanTextView.setOnClickListener(this)
 
         //  Mendaftarkan event klik untuk kembali ke Activity sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.headerKembaliImageView)
@@ -132,20 +136,20 @@ class DeskripsiLaptopActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.telusuriFooterTelusuriImageView ->{
-                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, MainActivity::class.java)
+            R.id.telusuriFooterTelusuriImageView, R.id.telusuriFooterTelusuriTextView ->{
+                val moveIntent = Intent(this@DeskripsiLaptopActivity, MainActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.telusuriFooterRekomendasiImageView ->{
-                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, RekomendasiActivity::class.java)
+            R.id.telusuriFooterRekomendasiImageView, R.id.telusuriFooterRekomendasiTextView ->{
+                val moveIntent = Intent(this@DeskripsiLaptopActivity, RekomendasiActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.telusuriFooterBandingkanImageView ->{
-                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
+            R.id.telusuriFooterBandingkanImageView, R.id.telusuriFooterBandingkanTextView ->{
+                val moveIntent = Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }
             R.id.deskripsiLaptopBandingkanTextView ->{
-                val moveIntent = android.content.Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
+                val moveIntent = Intent(this@DeskripsiLaptopActivity, BandingkanActivity::class.java)
                 moveIntent.putExtra("laptopKiri", laptopTerbaru)
                 startActivity(moveIntent)
             }

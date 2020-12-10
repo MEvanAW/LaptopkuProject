@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_bandingkan.*
+import kotlinx.android.synthetic.main.footer_bandingkan.*
 
 class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     // Variabel untuk menyimpan laptop kiri dan laptop kanan
@@ -70,10 +71,12 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
         // Mendaftarkan event klik untuk pindah ke Activity Telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.bandingkanFooterTelusuriImageView)
         telusuriImageView.setOnClickListener(this)
+        bandingkanFooterTelusuriTextView.setOnClickListener(this)
 
         // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
         val rekomendasiImageView: android.widget.ImageView = findViewById(R.id.bandingkanFooterRekomendasiImageView)
         rekomendasiImageView.setOnClickListener(this)
+        bandingkanFooterRekomendasiImageView.setOnClickListener(this)
 
         // Mendaftarkan event klik untuk kembali ke activity sebelumnya
         val kembaliImageView: android.widget.ImageView = findViewById(R.id.bandingkanKembaliImageView)
@@ -83,11 +86,11 @@ class BandingkanActivity : AppCompatActivity(), View.OnClickListener {
     // Semua event klik
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.bandingkanFooterTelusuriImageView ->{
+            R.id.bandingkanFooterTelusuriImageView, R.id.bandingkanFooterTelusuriTextView ->{
                 val moveIntent = Intent(this@BandingkanActivity, MainActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.bandingkanFooterRekomendasiImageView ->{
+            R.id.bandingkanFooterRekomendasiImageView, R.id.bandingkanFooterRekomendasiTextView ->{
                 val moveIntent = Intent(this@BandingkanActivity, RekomendasiActivity::class.java)
                 moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)

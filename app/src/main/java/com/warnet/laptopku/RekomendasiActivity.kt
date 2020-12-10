@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main.footer_rekomendasi.*
 
 class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     // inisiasi variabel untuk menyimpan data semua laptop (operan dari Main Activity)
@@ -44,10 +45,12 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
         // Digunakan untuk pindah ke tampilan telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.rekomendasiFooterTelusuriImageView)
         telusuriImageView.setOnClickListener(this)
+        rekomendasiFooterTelusuriTextView.setOnClickListener(this)
 
         // Digunakan untuk pindah ke tampilan bandingkan
         val bandingkanImageView: android.widget.ImageView = findViewById(R.id.rekomendasiFooterBandingkanImageView)
         bandingkanImageView.setOnClickListener(this)
+        rekomendasiFooterBandingkanTextView.setOnClickListener(this)
 
         // Digunakan untuk pindah ke fragment selanjutnya
         selanjutnyaButton = findViewById(R.id.selanjutnyaButton)
@@ -63,11 +66,11 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     // Isi semua event klik
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.rekomendasiFooterTelusuriImageView ->{
+            R.id.rekomendasiFooterTelusuriImageView, R.id.rekomendasiFooterTelusuriTextView ->{
                 val moveIntent = android.content.Intent(this@RekomendasiActivity, MainActivity::class.java)
                 startActivity(moveIntent)
             }
-            R.id.rekomendasiFooterBandingkanImageView ->{
+            R.id.rekomendasiFooterBandingkanImageView, R.id.rekomendasiFooterBandingkanTextView ->{
                 val moveIntent = android.content.Intent(this@RekomendasiActivity, BandingkanActivity::class.java)
                 startActivity(moveIntent)
             }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.footer_telusuri.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     // Inisiasi variabel RecyclerView untuk menampilkan laptop rilis terbaru
@@ -87,10 +88,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // Mendaftarkan event klik untuk pindah ke Activity Rekomendasi
         val imgMenuRekomendasi: ImageView = findViewById(R.id.telusuriFooterRekomendasiImageView)
         imgMenuRekomendasi.setOnClickListener(this)
+        telusuriFooterRekomendasiTextView.setOnClickListener(this)
 
         // Mendaftarkan event klik untuk pindah ke Activity Bandingkan
         val imgMenuBandingkan: ImageView = findViewById(R.id.telusuriFooterBandingkanImageView)
         imgMenuBandingkan.setOnClickListener(this)
+        telusuriFooterBandingkanTextView.setOnClickListener(this)
     }
 
     // Memanggil data laptop dari Firestore sekaligus ditampilkan
@@ -208,12 +211,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 moveIntent.putExtra("autoComplete", autoComplete)
                 startActivity(moveIntent)
             }
-            R.id.telusuriFooterRekomendasiImageView ->{
+            R.id.telusuriFooterRekomendasiImageView, R.id.telusuriFooterRekomendasiTextView ->{
                 val moveIntent = Intent(this@MainActivity, RekomendasiActivity::class.java)
                 moveIntent.putExtra("listLaptop", listLaptop)
                 startActivity(moveIntent)
             }
-            R.id.telusuriFooterBandingkanImageView ->{
+            R.id.telusuriFooterBandingkanImageView, R.id.telusuriFooterBandingkanTextView ->{
                 val moveIntent = Intent(this@MainActivity, BandingkanActivity::class.java)
                 moveIntent.putExtra("listLaptop", listLaptop)
                 moveIntent.putExtra("autoComplete", autoComplete)
