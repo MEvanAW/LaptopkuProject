@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.footer_rekomendasi.*
 
 class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
     // inisiasi variabel untuk menyimpan data semua laptop (operan dari Main Activity)
-    private lateinit var listLaptop: ArrayList<LaptopTerbaru>
+    private var listLaptop: ArrayList<LaptopTerbaru>? = null
 
     // fragmentManager beserta transaction untuk mengatur pergantian fragment
     private lateinit var fragmentManager: FragmentManager
@@ -40,7 +41,9 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
         transaction.commit()
 
         // Menerima operan data laptop
-        listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>
+        listLaptop = intent.getSerializableExtra("listLaptop") as ArrayList<LaptopTerbaru>?
+        if (listLaptop == null)
+            muatSemuaLaptop()
 
         // Digunakan untuk pindah ke tampilan telusuri
         val telusuriImageView: android.widget.ImageView = findViewById(R.id.rekomendasiFooterTelusuriImageView)
@@ -126,7 +129,7 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                                 keperluanFragment.grafis2D, keperluanFragment.grafis3D, keperluanFragment.editingVideo,
                                 keperluanFragment.pekerjaanRingan, prioritasFragment.isPerforma, brandFragment.isAcer,
                                 brandFragment.isAsus, brandFragment.isHp, brandFragment.isLenovo, brandFragment.isMsi,
-                                ArrayList(listLaptop))
+                                ArrayList(listLaptop!!))
                             transaction.replace(R.id.rekomendasiFrameLayout, hasilFragment)
                             transaction.addToBackStack(null)
                             transaction.commit()
@@ -187,5 +190,47 @@ class RekomendasiActivity : AppCompatActivity(), View.OnClickListener {
                 currentFragment = "brand"
             }
         }
+    }
+
+    // Memanggil data semua laptop
+    private fun muatSemuaLaptop() {
+        listLaptop = arrayListOf()
+        val db = FirebaseFirestore.getInstance()
+        db.collection("spekLaptop")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    listLaptop?.add(
+                        LaptopTerbaru(
+                            document.getString("namaLaptop") ?: "",
+                            document.getString("hargaLaptop") ?: "",
+                            document.getString("gambar") ?: "",
+                            document.getString("acadapter") ?: "",
+                            document.getString("audio") ?: "",
+                            document.getString("baterai") ?: "",
+                            document.getString("berat") ?: "",
+                            document.getString("brand") ?: "",
+                            document.getString("chipset") ?: "",
+                            document.getString("cpu") ?: "",
+                            document.getString("dimensi") ?: "",
+                            (document.get("grafis") ?: arrayListOf("")) as ArrayList<String>,
+                            (document.get("io") ?: arrayListOf("")) as ArrayList<String>,
+                            (document.get("kategori") ?: arrayListOf("")) as ArrayList<String>,
+                            document.getString("keyboard") ?: "",
+                            (document.get("komunikasi") ?: arrayListOf("")) as ArrayList<String>,
+                            document.getString("layar") ?: "",
+                            document.getString("memori") ?: "",
+                            document.getString("os") ?: "",
+                            document.getString("penyimpanan") ?: "",
+                            document.getString("tanggalRilis") ?: "",
+                            document.getString("webcam") ?: "",
+                            (document.getLong("performa") ?: 1).toInt(),
+                            (document.getLong("portabilitas") ?: 1).toInt()
+                        )
+                    )
+                }
+                if (listLaptop!!.isEmpty())
+                    muatSemuaLaptop()
+            }
     }
 }
